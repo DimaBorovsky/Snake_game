@@ -1,7 +1,11 @@
+from tkinter.constants import RIGHT
 from turtle import Turtle
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE = 20
-
+UP_TURN_ANGLE = 90
+LEFT_TURN_ANGLE = 360
+RIGHT_TURN_ANGLE = 0
+DOWN_TURN_ANGLE = 180
 
 class Snake:
 
@@ -29,3 +33,20 @@ class Snake:
         self.snake_body[0].forward(MOVE_DISTANCE)
 
 
+    def up(self):
+        self.move_snake()
+        self.snake_body[0].setheading(90)
+
+
+    def down(self):
+        self.move_snake()
+        self.snake_body[0].setheading(270)
+
+
+    def right(self):
+        self.move_snake()
+        self.snake_body[0].setheading(0)
+
+    def left(self):
+        self.move_snake()
+        self.snake_body[0].setheading(180)
