@@ -3,15 +3,16 @@ from turtle import Turtle
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE = 20
 UP_TURN_ANGLE = 90
-LEFT_TURN_ANGLE = 360
+LEFT_TURN_ANGLE = 180
 RIGHT_TURN_ANGLE = 0
-DOWN_TURN_ANGLE = 180
+DOWN_TURN_ANGLE = 270
 
 class Snake:
 
     def __init__(self):
         self.snake_body = []
         self.create_snakes()
+        self.head = self.snake_body[0]
 
     def create_snakes(self):
         for position in STARTING_POSITIONS:
@@ -30,23 +31,23 @@ class Snake:
             newy = self.snake_body[snake_num - 1].ycor()
             self.snake_body[snake_num].goto(newx, newy)
 
-        self.snake_body[0].forward(MOVE_DISTANCE)
+        self.head.forward(MOVE_DISTANCE)
 
 
     def up(self):
-        self.move_snake()
-        self.snake_body[0].setheading(90)
+        if self.head.heading() != DOWN_TURN_ANGLE:
+            self.head.setheading(UP_TURN_ANGLE)
 
 
     def down(self):
-        self.move_snake()
-        self.snake_body[0].setheading(270)
+        if self.head.heading() != UP_TURN_ANGLE:
+            self.head.setheading(DOWN_TURN_ANGLE)
 
 
     def right(self):
-        self.move_snake()
-        self.snake_body[0].setheading(0)
+        if self.head.heading() != LEFT_TURN_ANGLE:
+            self.head.setheading(RIGHT_TURN_ANGLE)
 
     def left(self):
-        self.move_snake()
-        self.snake_body[0].setheading(180)
+        if self.head.heading() != RIGHT_TURN_ANGLE:
+            self.head.setheading(LEFT_TURN_ANGLE)
