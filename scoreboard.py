@@ -10,10 +10,16 @@ class ScoreBoard(Turtle):
         self.penup()
         self.goto(0,270)
         self.color("white")
-        self.write(arg=f"Score: {self.score}",align="center",font=("Arial",10,"normal"))
+        self.write(arg=f"Score: {self.score}",align="center",font=("Arial",24,"normal"))
 
 
     def increase_score(self):
         self.clear()
         self.score +=1
-        self.write(arg=f"Score: {self.score}", align="center", font=("Arial", 10, "normal"))
+        self.write(arg=f"Score: {self.score}", align="center", font=("Arial", 24, "normal"))
+
+
+    def game_over(self):
+        self.clear()
+        self.goto(0, 0)
+        self.write(arg=f"Sorry Game Over", align="center", font=("Arial", 24, "normal"))
