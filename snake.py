@@ -12,17 +12,22 @@ class Snake:
         self.snake_body = []
         self.create_snakes()
         self.head = self.snake_body[0]
-
+        self.tail = self.snake_body[-1]
 
     def create_snakes(self):
         for position in STARTING_POSITIONS:
-            new_snake = Turtle(shape="square")
-            new_snake.color("white")
-            new_snake.penup()
-            new_snake.goto(position)
-            self.snake_body.append(new_snake)
+            self.add_snake(position)
+
+    def add_snake(self,position):
+        new_snake = Turtle(shape="square")
+        new_snake.color("white")
+        new_snake.penup()
+        new_snake.goto(position)
+        self.snake_body.append(new_snake)
 
 
+    def extend(self):
+        self.add_snake(self.snake_body[-1].position())
 
 
     def move_snake(self):
